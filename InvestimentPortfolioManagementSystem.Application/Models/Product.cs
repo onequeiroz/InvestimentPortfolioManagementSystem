@@ -40,6 +40,7 @@ namespace InvestimentPortfolioManagementSystem.Application.Models
 
         /* EF Relations */
         public User Owner { get; set; }
+
         public IEnumerable<Transaction> Transactions { get; set; }
     }
 }

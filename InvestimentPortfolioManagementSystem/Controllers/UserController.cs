@@ -21,7 +21,7 @@ namespace InvestimentPortfolioManagementSystem.API.Controllers
         }
 
         [HttpGet(Name = "Get All Users")]
-        public async Task<IActionResult> GetAllAsync()
+        public async Task<IActionResult> GetAllUsersAsync()
         {
             IEnumerable<User> users = await _userRepository.GetAllAsync();
             return Ok(users);

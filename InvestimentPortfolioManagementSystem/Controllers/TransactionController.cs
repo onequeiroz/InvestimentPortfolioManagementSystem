@@ -13,10 +13,45 @@ namespace InvestimentPortfolioManagementSystem.API.Controllers
     public class TransactionController : ControllerBase
     {
         private readonly ITransactionService _transactionService;
+        private readonly ITransactionRepository _transactionRepository;
 
-        public TransactionController(ITransactionService transactionService)
+        public TransactionController(ITransactionService transactionService, ITransactionRepository transactionRepository)
         {
             _transactionService = transactionService;
+            _transactionRepository = transactionRepository;
+        }
+
+        [HttpGet(Name = "Get All Transactions")]
+        public async Task<IActionResult> GetAllTransactionsAsync()
+        {
+            IEnumerable<Transaction> products = await _transactionRepository.GetAllAsync();
+            return Ok(products);
+        }
+
+        [HttpGet(Name = "Get Transaction By Id")]
+        public async Task<IActionResult> GetTransactionByIdAsync([FromQuery] Guid transactionId)
+        {
+            Transaction transaction = await _transactionRepository.GetTransactionByIdAsync(transactionId);
+            if (transaction == null)
+            {
+                return NotFound();
+            }
+
+            return Ok(transaction);
+        }
+
+        [HttpGet(Name = "Get Transactions By User Id")]
+        public async Task<IActionResult> GetTransactionsByUserIdAsync([FromQuery] Guid userId)
+        {
+            IEnumerable<Transaction> transactions = await _transactionRepository.GetTransactionsByUserIdAsync(userId);
+            return Ok(transactions);
+        }
+
+        [HttpGet(Name = "Get Transactions By Product Id")]
+        public async Task<IActionResult> GetTransactionsByProductIdAsync([FromQuery] Guid productId)
+        {
+            IEnumerable<Transaction> transactions = await _transactionRepository.GetTransactionsByProductIdAsync(productId);
+            return Ok(transactions);
         }
 
         [HttpPost(Name = "Create Transaction")]

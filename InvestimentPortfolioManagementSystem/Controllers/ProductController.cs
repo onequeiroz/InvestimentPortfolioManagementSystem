@@ -23,7 +23,7 @@ namespace InvestimentPortfolioManagementSystem.API.Controllers
         }
 
         [HttpGet(Name = "Get All Products")]
-        public async Task<IActionResult> GetAllAsync()
+        public async Task<IActionResult> GetAllProductsAsync()
         {
             IEnumerable<Product> products = await _productRepository.GetAllAsync();
             return Ok(products);

@@ -41,6 +41,7 @@ Neste momento, já deve ser possível rodar a aplicação!
 > **Importante notar**: o disparo de Email não está funcionando por motivos de segurança.\
 > Caso deseje rodar o disparo de Email, *entre em contato comigo!*\
 > Posso fornecer uma chave que funcione para teste ou orientar como criar uma.
+> Tutorial seguido para implementação: https://www.twilio.com/en-us/blog/how-to-send-recurring-emails-in-csharp-dotnet-using-sendgrid-and-quartz-net
 
 ## Como utilizar a aplicação
 Ao rodar a aplicação, será possível ver o Swagger com os endpoints criados.
